@@ -32,7 +32,7 @@ public class GameArithmeticProgression {
             Engine.question();
             for (int i = 0; i < numbers; i++) {
                 if (i == hidden) {
-                    System.out.print("... ");
+                    System.out.print(".. ");
                 } else {
                     System.out.print(sequence[i] + " ");
                 }
