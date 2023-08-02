@@ -2,7 +2,6 @@ package hexlet.code.games;
 
 import hexlet.code.Cli;
 import hexlet.code.Engine;
-
 import java.util.Scanner;
 
 public class GamePrimeNumber {
@@ -14,7 +13,6 @@ public class GamePrimeNumber {
 
         Engine.setRound(0);
         while (Engine.getRound() < Engine.getRoundsForWin()) {
-
             int number = (int) (Math.random() * 100) + 1;
 
             Engine.question();
@@ -34,7 +32,7 @@ public class GamePrimeNumber {
         Engine.congratulations();
     }
 
-    public static String isPrime(int number) {
+    private static String isPrime(int number) {
         if (number < 2) {
             return "no";
         }

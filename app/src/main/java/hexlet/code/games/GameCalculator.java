@@ -2,12 +2,12 @@ package hexlet.code.games;
 
 import hexlet.code.Cli;
 import hexlet.code.Engine;
-
 import java.util.Random;
 import java.util.Scanner;
 
 public class GameCalculator {
-    static Random random = new Random();
+    private static final Random random = new Random();
+
     public static void gameCalculator() {
         Scanner scanner = new Scanner(System.in);
 
@@ -39,7 +39,8 @@ public class GameCalculator {
         }
         Engine.congratulations();
     }
-    public static String getRandomOperator() {
+
+    private static String getRandomOperator() {
         int operator = random.nextInt(3) + 1;
         switch (operator) {
             case 1:
@@ -52,7 +53,8 @@ public class GameCalculator {
                 throw new IllegalArgumentException("Invalid operator");
         }
     }
-    public static int getCorrectAnswer(int firstNumber, int secondNumber, String operator) {
+
+    private static int getCorrectAnswer(int firstNumber, int secondNumber, String operator) {
         switch (operator) {
             case "+":
                 return firstNumber + secondNumber;

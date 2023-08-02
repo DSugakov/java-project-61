@@ -1,21 +1,22 @@
 package hexlet.code.games;
+
 import hexlet.code.Cli;
 import hexlet.code.Engine;
-
 import java.util.Random;
 import java.util.Scanner;
 
 public class GameParity {
+    private static final Random random = new Random();
+
     public static void gameParity() {
-        Random random = new Random();
         Scanner scanner = new Scanner(System.in);
 
         Cli.acquaintance();
 
         Engine.task("Answer 'yes' if the number is even, otherwise answer 'no'.");
         Engine.setRound(0);
-        while (Engine.getRound() < Engine.getRoundsForWin()) {
 
+        while (Engine.getRound() < Engine.getRoundsForWin()) {
             int question = random.nextInt(100);
 
             Engine.question();
@@ -23,7 +24,6 @@ public class GameParity {
 
             Engine.userAnswer();
             String answer = scanner.nextLine().toLowerCase();
-
 
             boolean correct = isParity(question, answer);
 
@@ -37,14 +37,12 @@ public class GameParity {
         }
         Engine.congratulations();
     }
-    public static boolean isParity(int question, String answer) {
+
+    private static boolean isParity(int question, String answer) {
         return question % 2 == 0 && answer.equals("yes") || question % 2 != 0 && answer.equals("no");
     }
-    public static String correctAnswer(int question) {
-        if (question % 2 == 0) {
-            return "yes";
-        } else {
-            return "no";
-        }
+
+    private static String correctAnswer(int question) {
+        return question % 2 == 0 ? "yes" : "no";
     }
 }

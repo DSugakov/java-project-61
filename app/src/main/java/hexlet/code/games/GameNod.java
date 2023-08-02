@@ -2,13 +2,13 @@ package hexlet.code.games;
 
 import hexlet.code.Cli;
 import hexlet.code.Engine;
-
 import java.util.Random;
 import java.util.Scanner;
 
 public class GameNod {
+    private static final Random random = new Random();
+
     public static void gameNod() {
-        Random random = new Random();
         Scanner scanner = new Scanner(System.in);
 
         Cli.acquaintance();
@@ -26,7 +26,7 @@ public class GameNod {
             Engine.userAnswer();
             int answer = scanner.nextInt();
 
-            int correctAnswer = correctAnswer(firstNumber, secondNumber);
+            int correctAnswer = calculateGcd(firstNumber, secondNumber);
 
             if (answer == correctAnswer) {
                 Engine.correctAnswerMessage();
@@ -38,8 +38,9 @@ public class GameNod {
         }
         Engine.congratulations();
     }
-    public static int correctAnswer(int firstNumber, int secondNumber) {
-        while (secondNumber > 0) {
+
+    public static int calculateGcd(int firstNumber, int secondNumber) {
+        while (secondNumber != 0) {
             int temp = firstNumber % secondNumber;
             firstNumber = secondNumber;
             secondNumber = temp;
