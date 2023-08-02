@@ -14,9 +14,9 @@ public class GameNod {
         Cli.acquaintance();
 
         Engine.task("Find the greatest common divisor of given numbers.");
-        Engine.round = 0;
+        Engine.setRound(0);
 
-        while (Engine.round < Engine.roundsForWin) {
+        while (Engine.getRound() < Engine.getRoundsForWin()) {
             int firstNumber = random.nextInt(100);
             int secondNumber = random.nextInt(100);
 
@@ -30,7 +30,7 @@ public class GameNod {
 
             if (answer == correctAnswer) {
                 Engine.correctAnswerMessage();
-                Engine.round++;
+                Engine.setRound(Engine.getRound() + 1);
             } else {
                 Engine.wrongAnswerMessage(String.valueOf(answer), String.valueOf(correctAnswer));
                 return;

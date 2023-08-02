@@ -14,9 +14,9 @@ public class GameCalculator {
         Cli.acquaintance();
 
         Engine.task("What is the result of the expression?");
-        Engine.round = 0;
+        Engine.setRound(0);
 
-        while (Engine.round < Engine.roundsForWin) {
+        while (Engine.getRound() < Engine.getRoundsForWin()) {
             int firstNumber = random.nextInt(100);
             int secondNumber = random.nextInt(100);
 
@@ -31,7 +31,7 @@ public class GameCalculator {
 
             if (correctAnswer == answer) {
                 Engine.correctAnswerMessage();
-                Engine.round++;
+                Engine.setRound(Engine.getRound() + 1);
             } else {
                 Engine.wrongAnswerMessage(String.valueOf(answer), String.valueOf(correctAnswer));
                 return;

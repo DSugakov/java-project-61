@@ -4,6 +4,7 @@ plugins {
     id 'checkstyle'
 }
 
+
 group 'hexlet.code'
 version '1.0-SNAPSHOT'
 
@@ -33,14 +34,11 @@ run {
 }
 
 checkstyle {
-    toolVersion = '8.29'
-    configFile = file('config/checkstyle.xml')
-    sourceSets {
-        main {
-            java.srcDirs = ['src/main/java']
-        }
-    }
+    toolVersion = '10.3.3'
+    configFile = file('config/checkstyle/checkstyle.xml')
 }
-task checkstyle {
-    dependsOn 'checkstyleMain'
+tasks.withType(Checkstyle) {
+    reports {
+        sarif.required = true
+    }
 }

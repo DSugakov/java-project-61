@@ -1,9 +1,22 @@
 package hexlet.code;
 
 public class Engine {
-    public static int round;
+    private static int round;
+
+    public static void setRound(int round) {
+        Engine.round = round;
+    }
+
+    public static int getRound() {
+        return round;
+    }
+
+    public static int getRoundsForWin() {
+        return roundsForWin;
+    }
+
     public static int roundsForWin = 3;
-    static String userName;
+    private static String userName;
     public static void task(String text) {
         System.out.println(text);
     }
@@ -29,7 +42,7 @@ public class Engine {
     public static String getUserName() {
         return userName;
     }
-    public void setUserName(String name) {
+    public static void setUserName(String name) {
         userName = name;
     }
 }

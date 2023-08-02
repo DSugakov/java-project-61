@@ -12,9 +12,9 @@ public class GameArithmeticProgression {
         Cli.acquaintance();
 
         Engine.task("What number is missing in the progression?");
-        Engine.round = 0;
+        Engine.setRound(0);
 
-        while (Engine.round < Engine.roundsForWin) {
+        while (Engine.getRound() < Engine.getRoundsForWin()) {
             int firstNumber = (int) (Math.random() * 100) + 1;
             int difference = (int) (Math.random() * 10) + 1;
             int numbers = (int) (Math.random() * 6) + 5;
@@ -43,7 +43,7 @@ public class GameArithmeticProgression {
 
             if (userAnswer == hiddenNumber) {
                 Engine.correctAnswerMessage();
-                Engine.round++;
+                Engine.setRound(Engine.getRound() + 1);
             } else {
                 Engine.wrongAnswerMessage(String.valueOf(userAnswer), String.valueOf(hiddenNumber));
                 return;

@@ -12,8 +12,8 @@ public class GamePrimeNumber {
         Cli.acquaintance();
         Engine.task("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
 
-        Engine.round = 0;
-        while (Engine.round < Engine.roundsForWin) {
+        Engine.setRound(0);
+        while (Engine.getRound() < Engine.getRoundsForWin()) {
 
             int number = (int) (Math.random() * 100) + 1;
 
@@ -25,7 +25,7 @@ public class GamePrimeNumber {
 
             if (isPrime(number).equals(userAnswer)) {
                 Engine.correctAnswerMessage();
-                Engine.round++;
+                Engine.setRound(Engine.getRound() + 1);
             } else {
                 Engine.wrongAnswerMessage(userAnswer, isPrime(number));
                 return;

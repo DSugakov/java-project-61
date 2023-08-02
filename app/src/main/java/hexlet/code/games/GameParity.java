@@ -13,8 +13,8 @@ public class GameParity {
         Cli.acquaintance();
 
         Engine.task("Answer 'yes' if the number is even, otherwise answer 'no'.");
-        Engine.round = 0;
-        while (Engine.round < Engine.roundsForWin) {
+        Engine.setRound(0);
+        while (Engine.getRound() < Engine.getRoundsForWin()) {
 
             int question = random.nextInt(100);
 
@@ -29,7 +29,7 @@ public class GameParity {
 
             if (correct) {
                 Engine.correctAnswerMessage();
-                Engine.round++;
+                Engine.setRound(Engine.getRound() + 1);
             } else {
                 Engine.wrongAnswerMessage(answer, correctAnswer(question));
                 return;
