@@ -2,68 +2,52 @@ package hexlet.code.games;
 
 import hexlet.code.Cli;
 import hexlet.code.Engine;
+
 import java.util.Random;
-import java.util.Scanner;
 
 public class GameCalculator {
-    private static final Random random = new Random();
+    private static final Random RANDOM = new Random();
 
     public static void gameCalculator() {
-        Scanner scanner = new Scanner(System.in);
-
         Cli.acquaintance();
 
         Engine.task("What is the result of the expression?");
         Engine.setRound(0);
 
-        while (Engine.getRound() < Engine.getRoundsToWin()) {
-            int firstNumber = random.nextInt(100);
-            int secondNumber = random.nextInt(100);
+        while (Engine.getRound() < Engine.getRoundsForWin()) {
+            int number1 = RANDOM.nextInt(100);
+            int number2 = RANDOM.nextInt(100);
+            int operatorIndex = RANDOM.nextInt(Engine.OPERATORS.length);
 
-            String operator = getRandomOperator();
             Engine.question();
-            System.out.println(firstNumber + " " + operator + " " + secondNumber);
-
-            int correctAnswer = getCorrectAnswer(firstNumber, secondNumber, operator);
+            System.out.println(number1 + " " + Engine.OPERATORS[operatorIndex] + " " + number2);
 
             Engine.userAnswer();
-            int answer = scanner.nextInt();
+            int userAnswer = Engine.getScanner().nextInt();
 
-            if (correctAnswer == answer) {
+            int correctAnswer = calculate(number1, number2, Engine.OPERATORS[operatorIndex]);
+
+            if (userAnswer == correctAnswer) {
                 Engine.correctAnswerMessage();
                 Engine.setRound(Engine.getRound() + 1);
             } else {
-                Engine.wrongAnswerMessage(String.valueOf(answer), String.valueOf(correctAnswer));
+                Engine.wrongAnswerMessage(String.valueOf(userAnswer), String.valueOf(correctAnswer));
                 return;
             }
         }
         Engine.congratulations();
     }
 
-    private static String getRandomOperator() {
-        int operator = random.nextInt(3) + 1;
-        switch (operator) {
-            case 1:
-                return "+";
-            case 2:
-                return "-";
-            case 3:
-                return "*";
-            default:
-                throw new IllegalArgumentException("Invalid operator");
-        }
-    }
-
-    private static int getCorrectAnswer(int firstNumber, int secondNumber, String operator) {
+    private static int calculate(int number1, int number2, String operator) {
         switch (operator) {
             case "+":
-                return firstNumber + secondNumber;
+                return number1 + number2;
             case "-":
-                return firstNumber - secondNumber;
+                return number1 - number2;
             case "*":
-                return firstNumber * secondNumber;
+                return number1 * number2;
             default:
-                return -1;
+                throw new IllegalArgumentException("Unknown operator: " + operator);
         }
     }
 }

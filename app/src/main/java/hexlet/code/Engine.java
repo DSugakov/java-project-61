@@ -1,33 +1,33 @@
 package hexlet.code;
 
+import java.util.Scanner;
+
 public class Engine {
-    private static int roundNumber;
-    private static final int ROUNDS_TO_WIN = 3;
-    private static String userName;
+    private static final Scanner SCANNER = new Scanner(System.in);
+    public static final String[] OPERATORS = {"+", "-", "*"};
+    public static final int MAX_RANDOM_NUMBER = 100;
+    public static final int MAX_DIFFERENCE = 10;
+    public static final int MIN_NUMBERS = 5;
+    public static final int MAX_NUMBERS = 6;
 
-    public static void task(String text) {
-        System.out.println(text);
+    private static int round = 0;
+    private static final int roundsForWin = 3;
+    private static String userName = "";
+
+    public static Scanner getScanner() {
+        return SCANNER;
     }
 
-    public static void correctAnswerMessage() {
-        System.out.println("Correct!");
+    public static int getRound() {
+        return round;
     }
 
-    public static void congratulations() {
-        System.out.println("Congratulations, " + getUserName() + "!");
+    public static void setRound(int roundNumber) {
+        round = roundNumber;
     }
 
-    public static void wrongAnswerMessage(String userAnswer, String correctAnswer) {
-        System.out.println("'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was " + "'" + correctAnswer + "'");
-        System.out.println("Let's try again, " + getUserName() + "!");
-    }
-
-    public static void question() {
-        System.out.print("Question: ");
-    }
-
-    public static void userAnswer() {
-        System.out.print("Your answer: ");
+    public static int getRoundsForWin() {
+        return roundsForWin;
     }
 
     public static String getUserName() {
@@ -38,15 +38,28 @@ public class Engine {
         userName = name;
     }
 
-    public static int getRound() {
-        return roundNumber;
+    public static void question() {
+        System.out.print("Question: ");
     }
 
-    public static void setRound(int roundNumber) {
-        Engine.roundNumber = roundNumber;
+    public static void userAnswer() {
+        System.out.print("Your answer: ");
     }
 
-    public static int getRoundsToWin() {
-        return ROUNDS_TO_WIN;
+    public static void task(String taskDescription) {
+        System.out.println(taskDescription);
+    }
+
+    public static void correctAnswerMessage() {
+        System.out.println("Correct!");
+    }
+
+    public static void wrongAnswerMessage(String userAnswer, String correctAnswer) {
+        System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.%n", userAnswer, correctAnswer);
+        System.out.printf("Let's try again, %s!%n", userName);
+    }
+
+    public static void congratulations() {
+        System.out.printf("Congratulations, %s!%n", userName);
     }
 }

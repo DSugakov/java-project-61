@@ -7,9 +7,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GameNod {
-    private static final Random random = new Random();
-
     public static void gameNod() {
+        Random random = new Random();
         Scanner scanner = new Scanner(System.in);
 
         Cli.acquaintance();
@@ -17,9 +16,9 @@ public class GameNod {
         Engine.task("Find the greatest common divisor of given numbers.");
         Engine.setRound(0);
 
-        while (Engine.getRound() < Engine.getRoundsToWin()) {
-            int firstNumber = random.nextInt(100) + 1;
-            int secondNumber = random.nextInt(100) + 1;
+        while (Engine.getRound() < Engine.getRoundsForWin()) {
+            int firstNumber = random.nextInt(Engine.MAX_RANDOM_NUMBER) + 1;
+            int secondNumber = random.nextInt(Engine.MAX_RANDOM_NUMBER) + 1;
 
             Engine.question();
             System.out.println(firstNumber + " " + secondNumber);

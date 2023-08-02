@@ -2,6 +2,7 @@ package hexlet.code.games;
 
 import hexlet.code.Cli;
 import hexlet.code.Engine;
+
 import java.util.Scanner;
 
 public class GamePrimeNumber {
@@ -12,8 +13,9 @@ public class GamePrimeNumber {
         Engine.task("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
 
         Engine.setRound(0);
-        while (Engine.getRound() < Engine.getRoundsToWin()) {
-            int number = (int) (Math.random() * 100) + 1;
+        while (Engine.getRound() < Engine.getRoundsForWin()) {
+
+            int number = (int) (Math.random() * Engine.MAX_RANDOM_NUMBER) + 1;
 
             Engine.question();
             System.out.println(number);
@@ -32,7 +34,7 @@ public class GamePrimeNumber {
         Engine.congratulations();
     }
 
-    private static String isPrime(int number) {
+    public static String isPrime(int number) {
         if (number < 2) {
             return "no";
         }
