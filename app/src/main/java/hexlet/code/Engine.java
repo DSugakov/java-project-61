@@ -9,9 +9,8 @@ public class Engine {
     public static final int MAX_DIFFERENCE = 10;
     public static final int MIN_NUMBERS = 5;
     public static final int MAX_NUMBERS = 6;
-
+    private static final int ROUNDS_FOR_WIN = 3;
     private static int round = 0;
-    private static final int roundsForWin = 3;
     private static String userName = "";
 
     public static Scanner getScanner() {
@@ -27,7 +26,7 @@ public class Engine {
     }
 
     public static int getRoundsForWin() {
-        return roundsForWin;
+        return ROUNDS_FOR_WIN;
     }
 
     public static String getUserName() {

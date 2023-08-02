@@ -15,8 +15,8 @@ public class GameCalculator {
         Engine.setRound(0);
 
         while (Engine.getRound() < Engine.getRoundsForWin()) {
-            int number1 = RANDOM.nextInt(100);
-            int number2 = RANDOM.nextInt(100);
+            int number1 = RANDOM.nextInt(Engine.MAX_RANDOM_NUMBER);
+            int number2 = RANDOM.nextInt(Engine.MAX_RANDOM_NUMBER);
             int operatorIndex = RANDOM.nextInt(Engine.OPERATORS.length);
 
             Engine.question();
