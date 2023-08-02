@@ -16,7 +16,7 @@ public class GameCalculator {
         Engine.task("What is the result of the expression?");
         Engine.setRound(0);
 
-        while (Engine.getRound() < Engine.getRoundsForWin()) {
+        while (Engine.getRound() < Engine.getRoundsToWin()) {
             int firstNumber = random.nextInt(100);
             int secondNumber = random.nextInt(100);
 

@@ -1,8 +1,8 @@
 package hexlet.code;
 
 public class Engine {
-    private static int round;
-    private static final int ROUNDS_FOR_WIN = 3;
+    private static int roundNumber;
+    private static final int ROUNDS_TO_WIN = 3;
     private static String userName;
 
     public static void task(String text) {
@@ -39,14 +39,14 @@ public class Engine {
     }
 
     public static int getRound() {
-        return round;
+        return roundNumber;
     }
 
-    public static void setRound(int round) {
-        Engine.round = round;
+    public static void setRound(int roundNumber) {
+        Engine.roundNumber = roundNumber;
     }
 
-    public static int getRoundsForWin() {
-        return ROUNDS_FOR_WIN;
+    public static int getRoundsToWin() {
+        return ROUNDS_TO_WIN;
     }
 }

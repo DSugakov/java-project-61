@@ -2,6 +2,7 @@ package hexlet.code.games;
 
 import hexlet.code.Cli;
 import hexlet.code.Engine;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -16,7 +17,7 @@ public class GameArithmeticProgression {
         Engine.task("What number is missing in the progression?");
         Engine.setRound(0);
 
-        while (Engine.getRound() < Engine.getRoundsForWin()) {
+        while (Engine.getRound() < Engine.getRoundsToWin()) {
             int firstNumber = random.nextInt(100) + 1;
             int difference = random.nextInt(10) + 1;
             int numbers = random.nextInt(6) + 5;

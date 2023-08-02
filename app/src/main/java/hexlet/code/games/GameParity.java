@@ -16,7 +16,7 @@ public class GameParity {
         Engine.task("Answer 'yes' if the number is even, otherwise answer 'no'.");
         Engine.setRound(0);
 
-        while (Engine.getRound() < Engine.getRoundsForWin()) {
+        while (Engine.getRound() < Engine.getRoundsToWin()) {
             int question = random.nextInt(100);
 
             Engine.question();

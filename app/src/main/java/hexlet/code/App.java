@@ -12,30 +12,30 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Print.printMenu();
+        MenuOptions.printMenu();
 
         int input = scanner.nextInt();
         System.out.println("Your choice: " + input);
         switch (input) {
-            case 1:
+            case MenuOptions.GREET:
                 Cli.acquaintance();
                 break;
-            case 2:
+            case MenuOptions.EVEN:
                 GameParity.gameParity();
                 break;
-            case 3:
+            case MenuOptions.CALC:
                 GameCalculator.gameCalculator();
                 break;
-            case 4:
+            case MenuOptions.GCD:
                 GameNod.gameNod();
                 break;
-            case 5:
+            case MenuOptions.PROGRESSION:
                 GameArithmeticProgression.arithmeticProgression();
                 break;
-            case 6:
+            case MenuOptions.PRIME:
                 GamePrimeNumber.gamePrimeNumber();
                 break;
-            case 0:
+            case MenuOptions.EXIT:
                 break;
             default:
                 System.out.println("Unknown command");
