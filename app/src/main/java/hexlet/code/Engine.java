@@ -58,12 +58,6 @@ public class Engine {
         System.out.printf("Congratulations, %s!%n", userName);
     }
 
-    public static String gamePrimeResult(boolean answer) {
-        if (!answer) {
-            return "no";
-        }
-        return "yes";
-    }
     public static void runGame(String rules, String[][] roundsData) {
         System.out.println(rules);
 

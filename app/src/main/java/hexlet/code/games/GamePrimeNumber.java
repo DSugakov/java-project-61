@@ -24,7 +24,7 @@ public class GamePrimeNumber {
 
         for (int i = 0; i < Engine.getRoundsForWin(); i++) {
             int number = Utils.getRandomNumber(Engine.MAX_RANDOM_NUMBER) + 1;
-            String correctAnswer = Engine.gamePrimeResult(isPrime(number));
+            String correctAnswer = gamePrimeResult(isPrime(number));
 
             roundsData[i][0] = String.valueOf(number);
             roundsData[i][1] = correctAnswer;
@@ -33,6 +33,12 @@ public class GamePrimeNumber {
         return roundsData;
     }
 
+    public static String gamePrimeResult(boolean answer) {
+        if (!answer) {
+            return "no";
+        }
+        return "yes";
+    }
     private static boolean isPrime(int number) {
         if (number < 2) {
             return false;
