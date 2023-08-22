@@ -2,44 +2,38 @@ package hexlet.code.games;
 
 import hexlet.code.Cli;
 import hexlet.code.Engine;
-
-import java.util.Random;
-import java.util.Scanner;
+import hexlet.code.Utils;
 
 public class GameNod {
-    public static void gameNod() {
-        Random random = new Random();
-        Scanner scanner = new Scanner(System.in);
-
+    public static void buildGameNod() {
         Cli.acquaintance();
 
-        Engine.task("Find the greatest common divisor of given numbers.");
         Engine.setRound(0);
 
-        while (Engine.getRound() < Engine.getRoundsForWin()) {
-            int firstNumber = random.nextInt(Engine.MAX_RANDOM_NUMBER) + 1;
-            int secondNumber = random.nextInt(Engine.MAX_RANDOM_NUMBER) + 1;
+        String[][] roundsData = generateRoundsData();
 
-            Engine.question();
-            System.out.println(firstNumber + " " + secondNumber);
+        Engine.runGame("Find the greatest common divisor of given numbers.", roundsData);
 
-            Engine.userAnswer();
-            int answer = scanner.nextInt();
-
-            int correctAnswer = correctAnswer(firstNumber, secondNumber);
-
-            if (answer == correctAnswer) {
-                Engine.correctAnswerMessage();
-                Engine.setRound(Engine.getRound() + 1);
-            } else {
-                Engine.wrongAnswerMessage(String.valueOf(answer), String.valueOf(correctAnswer));
-                return;
-            }
-        }
         Engine.congratulations();
     }
 
-    public static int correctAnswer(int firstNumber, int secondNumber) {
+    private static String[][] generateRoundsData() {
+        String[][] roundsData = new String[Engine.getRoundsForWin()][2];
+
+        for (int i = 0; i < Engine.getRoundsForWin(); i++) {
+            int firstNumber = Utils.getRandomNumber(Engine.MAX_RANDOM_NUMBER) + 1;
+            int secondNumber = Utils.getRandomNumber(Engine.MAX_RANDOM_NUMBER) + 1;
+
+            int correctAnswer = generateGreatestDivisor(firstNumber, secondNumber);
+
+            roundsData[i][0] = firstNumber + " " + secondNumber;
+            roundsData[i][1] = String.valueOf(correctAnswer);
+        }
+
+        return roundsData;
+    }
+
+    private static int generateGreatestDivisor(int firstNumber, int secondNumber) {
         while (secondNumber > 0) {
             int temp = firstNumber % secondNumber;
             firstNumber = secondNumber;

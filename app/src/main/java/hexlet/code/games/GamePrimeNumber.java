@@ -2,47 +2,46 @@ package hexlet.code.games;
 
 import hexlet.code.Cli;
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
-import java.util.Scanner;
 
 public class GamePrimeNumber {
-    public static void gamePrimeNumber() {
-        Scanner scanner = new Scanner(System.in);
 
+    public static void buildGamePrimeNumber() {
         Cli.acquaintance();
-        Engine.task("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
 
         Engine.setRound(0);
-        while (Engine.getRound() < Engine.getRoundsForWin()) {
 
-            int number = (int) (Math.random() * Engine.MAX_RANDOM_NUMBER) + 1;
+        String[][] roundsData = generateRoundsData();
 
-            Engine.question();
-            System.out.println(number);
+        Engine.runGame("Answer 'yes' if given number is prime. Otherwise answer 'no'.", roundsData);
 
-            Engine.userAnswer();
-            String userAnswer = scanner.nextLine().toLowerCase();
-
-            if (isPrime(number).equals(userAnswer)) {
-                Engine.correctAnswerMessage();
-                Engine.setRound(Engine.getRound() + 1);
-            } else {
-                Engine.wrongAnswerMessage(userAnswer, isPrime(number));
-                return;
-            }
-        }
         Engine.congratulations();
     }
 
-    public static String isPrime(int number) {
+    private static String[][] generateRoundsData() {
+        String[][] roundsData = new String[Engine.getRoundsForWin()][2];
+
+        for (int i = 0; i < Engine.getRoundsForWin(); i++) {
+            int number = Utils.getRandomNumber(Engine.MAX_RANDOM_NUMBER) + 1;
+            String correctAnswer = Engine.gamePrimeResult(isPrime(number));
+
+            roundsData[i][0] = String.valueOf(number);
+            roundsData[i][1] = correctAnswer;
+        }
+
+        return roundsData;
+    }
+
+    private static boolean isPrime(int number) {
         if (number < 2) {
-            return "no";
+            return false;
         }
         for (int i = 2; i <= number / 2; i++) {
             if (number % i == 0) {
-                return "no";
+                return false;
             }
         }
-        return "yes";
+        return true;
     }
 }

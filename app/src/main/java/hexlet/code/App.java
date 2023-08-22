@@ -21,19 +21,19 @@ public class App {
                 Cli.acquaintance();
                 break;
             case MenuOptions.EVEN:
-                GameParity.gameParity();
+                GameParity.buildGameParity();
                 break;
             case MenuOptions.CALC:
                 GameCalculator.gameCalculator();
                 break;
             case MenuOptions.GCD:
-                GameNod.gameNod();
+                GameNod.buildGameNod();
                 break;
             case MenuOptions.PROGRESSION:
-                GameArithmeticProgression.arithmeticProgression();
+                GameArithmeticProgression.buildArithmeticProgression();
                 break;
             case MenuOptions.PRIME:
-                GamePrimeNumber.gamePrimeNumber();
+                GamePrimeNumber.buildGamePrimeNumber();
                 break;
             case MenuOptions.EXIT:
                 break;

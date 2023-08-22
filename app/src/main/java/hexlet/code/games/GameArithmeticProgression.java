@@ -2,52 +2,53 @@ package hexlet.code.games;
 
 import hexlet.code.Cli;
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
-import java.util.Scanner;
 
 public class GameArithmeticProgression {
-    public static void arithmeticProgression() {
-        Scanner scanner = new Scanner(System.in);
+
+    public static void buildArithmeticProgression() {
         Cli.acquaintance();
 
-        Engine.task("What number is missing in the progression?");
         Engine.setRound(0);
 
-        while (Engine.getRound() < Engine.getRoundsForWin()) {
-            int firstNumber = (int) (Math.random() * Engine.MAX_RANDOM_NUMBER) + 1;
-            int difference = (int) (Math.random() * Engine.MAX_DIFFERENCE) + 1;
-            int numbers = (int) (Math.random() * (Engine.MAX_NUMBERS - Engine.MIN_NUMBERS + 1)) + Engine.MIN_NUMBERS;
-            int[] sequence = new int[numbers];
-            sequence[0] = firstNumber;
+        String[][] roundsData = generateRoundsData();
 
-            for (int i = 1; i < numbers; i++) {
-                sequence[i] = sequence[i - 1] + difference;
-            }
+        Engine.runGame("What number is missing in the progression?", roundsData);
 
-            int hidden = (int) (Math.random() * numbers);
-            int hiddenNumber = sequence[hidden];
-            sequence[hidden] = -1;
+        Engine.congratulations();
+    }
 
-            Engine.question();
-            for (int i = 0; i < numbers; i++) {
-                if (i == hidden) {
-                    System.out.print(".. ");
+    private static String[][] generateRoundsData() {
+        String[][] roundsData = new String[Engine.getRoundsForWin()][2];
+
+        for (int i = 0; i < Engine.getRoundsForWin(); i++) {
+            int firstNumber = Utils.getRandomNumber(Engine.MAX_RANDOM_NUMBER) + 1;
+            int difference = Utils.getRandomNumber(Engine.MAX_DIFFERENCE) + 1;
+            int numbers = Utils.getRandomNumber(Engine.MAX_NUMBERS - Engine.MIN_NUMBERS + 1) + Engine.MIN_NUMBERS;
+            int[] progression = new int[numbers];
+
+            int hiddenIndex = Utils.getRandomNumber(numbers);
+            int hiddenNumber = 0;
+
+            StringBuilder questionBuilder = new StringBuilder();
+
+            for (int j = 0; j < numbers; j++) {
+                if (j == hiddenIndex) {
+                    progression[j] = -1;
+                    hiddenNumber = firstNumber + j * difference;
+                    questionBuilder.append(".. ");
                 } else {
-                    System.out.print(sequence[i] + " ");
+                    progression[j] = firstNumber + j * difference;
+                    questionBuilder.append(progression[j]).append(" ");
                 }
             }
-            System.out.println();
-            Engine.userAnswer();
-            int userAnswer = scanner.nextInt();
 
-            if (userAnswer == hiddenNumber) {
-                Engine.correctAnswerMessage();
-                Engine.setRound(Engine.getRound() + 1);
-            } else {
-                Engine.wrongAnswerMessage(String.valueOf(userAnswer), String.valueOf(hiddenNumber));
-                return;
-            }
+            String question = questionBuilder.toString().trim();
+            roundsData[i][0] = question;
+            roundsData[i][1] = String.valueOf(hiddenNumber);
         }
-        Engine.congratulations();
+
+        return roundsData;
     }
 }

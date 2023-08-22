@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Engine {
     private static final Scanner SCANNER = new Scanner(System.in);
-    public static final String[] OPERATORS = {"+", "-", "*"};
+
     public static final int MAX_RANDOM_NUMBER = 100;
     public static final int MAX_DIFFERENCE = 10;
     public static final int MIN_NUMBERS = 5;
@@ -27,10 +27,6 @@ public class Engine {
 
     public static int getRoundsForWin() {
         return ROUNDS_FOR_WIN;
-    }
-
-    public static String getUserName() {
-        return userName;
     }
 
     public static void setUserName(String name) {
@@ -60,5 +56,34 @@ public class Engine {
 
     public static void congratulations() {
         System.out.printf("Congratulations, %s!%n", userName);
+    }
+
+    public static String gamePrimeResult(boolean answer) {
+        if (!answer) {
+            return "no";
+        }
+        return "yes";
+    }
+    public static void runGame(String rules, String[][] roundsData) {
+        System.out.println(rules);
+
+        for (String[] step : roundsData) {
+            String question = step[0];
+            String correctAnswer = step[1];
+
+            question();
+            task(question);
+            userAnswer();
+            String userAnswer = getScanner().nextLine();
+
+            if (userAnswer.equals(correctAnswer)) {
+                correctAnswerMessage();
+            } else {
+                wrongAnswerMessage(userAnswer, correctAnswer);
+                return;
+            }
+        }
+
+        congratulations();
     }
 }
