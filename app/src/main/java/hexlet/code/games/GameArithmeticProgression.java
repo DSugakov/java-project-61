@@ -4,19 +4,17 @@ import hexlet.code.Cli;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
-
 public class GameArithmeticProgression {
+    static Engine engine = new Engine();
 
     public static void buildArithmeticProgression() {
         Cli.acquaintance();
 
-        Engine.setRound(0);
+        engine.setRound(0);
 
         String[][] roundsData = generateRoundsData();
 
-        Engine.runGame("What number is missing in the progression?", roundsData);
-
-        Engine.congratulations();
+        engine.runGame("What number is missing in the progression?", roundsData);
     }
 
     private static String[][] generateRoundsData() {
@@ -26,25 +24,20 @@ public class GameArithmeticProgression {
             int firstNumber = Utils.getRandomNumber(Engine.MAX_RANDOM_NUMBER) + 1;
             int difference = Utils.getRandomNumber(Engine.MAX_DIFFERENCE) + 1;
             int numbers = Utils.getRandomNumber(Engine.MAX_NUMBERS - Engine.MIN_NUMBERS + 1) + Engine.MIN_NUMBERS;
-            int[] progression = new int[numbers];
+            String[] progression = new String[numbers];
 
             int hiddenIndex = Utils.getRandomNumber(numbers);
-            int hiddenNumber = 0;
-
-            StringBuilder questionBuilder = new StringBuilder();
+            int hiddenNumber = firstNumber + hiddenIndex * difference;
 
             for (int j = 0; j < numbers; j++) {
                 if (j == hiddenIndex) {
-                    progression[j] = -1;
-                    hiddenNumber = firstNumber + j * difference;
-                    questionBuilder.append(".. ");
+                    progression[j] = "..";
                 } else {
-                    progression[j] = firstNumber + j * difference;
-                    questionBuilder.append(progression[j]).append(" ");
+                    progression[j] = String.valueOf(firstNumber + j * difference);
                 }
             }
 
-            String question = questionBuilder.toString().trim();
+            String question = String.join(" ", progression);
             roundsData[i][0] = question;
             roundsData[i][1] = String.valueOf(hiddenNumber);
         }

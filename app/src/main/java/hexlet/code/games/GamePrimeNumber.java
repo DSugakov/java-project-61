@@ -6,17 +6,17 @@ import hexlet.code.Utils;
 
 
 public class GamePrimeNumber {
+    static Engine engine = new Engine();
 
     public static void buildGamePrimeNumber() {
         Cli.acquaintance();
 
-        Engine.setRound(0);
+        engine.setRound(0);
 
         String[][] roundsData = generateRoundsData();
 
-        Engine.runGame("Answer 'yes' if given number is prime. Otherwise answer 'no'.", roundsData);
+        engine.runGame("Answer 'yes' if given number is prime. Otherwise answer 'no'.", roundsData);
 
-        Engine.congratulations();
     }
 
     private static String[][] generateRoundsData() {
@@ -39,6 +39,7 @@ public class GamePrimeNumber {
         }
         return "yes";
     }
+
     private static boolean isPrime(int number) {
         if (number < 2) {
             return false;

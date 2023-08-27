@@ -5,16 +5,16 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class GameNod {
+    static Engine engine = new Engine();
+
     public static void buildGameNod() {
         Cli.acquaintance();
 
-        Engine.setRound(0);
+        engine.setRound(0);
 
         String[][] roundsData = generateRoundsData();
 
-        Engine.runGame("Find the greatest common divisor of given numbers.", roundsData);
-
-        Engine.congratulations();
+        engine.runGame("Find the greatest common divisor of given numbers.", roundsData);
     }
 
     private static String[][] generateRoundsData() {

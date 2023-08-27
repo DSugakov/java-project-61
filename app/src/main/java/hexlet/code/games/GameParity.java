@@ -6,16 +6,17 @@ import hexlet.code.Utils;
 
 
 public class GameParity {
+    static Engine engine = new Engine();
+
     public static void buildGameParity() {
         Cli.acquaintance();
 
-        Engine.setRound(0);
+        engine.setRound(0);
 
         String[][] roundsData = generateRoundsData();
 
-        Engine.runGame("Answer 'yes' if the number is even, otherwise answer 'no'.", roundsData);
+        engine.runGame("Answer 'yes' if the number is even, otherwise answer 'no'.", roundsData);
 
-        Engine.congratulations();
     }
 
     private static String[][] generateRoundsData() {
@@ -34,10 +35,6 @@ public class GameParity {
     }
 
     private static String correctAnswer(int number) {
-        if (number % 2 == 0) {
-            return "yes";
-        } else {
-            return "no";
-        }
+        return (number % 2 == 0) ? "yes" : "no";
     }
 }
