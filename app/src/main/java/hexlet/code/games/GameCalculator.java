@@ -5,6 +5,8 @@ import hexlet.code.Engine;
 
 import java.util.Random;
 
+import static hexlet.code.Engine.MAX_RANDOM_NUMBER;
+
 public class GameCalculator {
     private static final Random RANDOM = new Random();
     private static final String[] MATH_OPERATORS = {"+", "-", "*"};
@@ -34,11 +36,11 @@ public class GameCalculator {
     }
 
     private static String[][] generateRoundsData() {
-        String[][] roundsData = new String[Engine.getRoundsForWin()][2];
+        String[][] roundsData = new String[engine.getRoundsForWin()][2];
 
-        for (int i = 0; i < Engine.getRoundsForWin(); i++) {
-            int number1 = RANDOM.nextInt(Engine.MAX_RANDOM_NUMBER);
-            int number2 = RANDOM.nextInt(Engine.MAX_RANDOM_NUMBER);
+        for (int i = 0; i < engine.getRoundsForWin(); i++) {
+            int number1 = RANDOM.nextInt(MAX_RANDOM_NUMBER);
+            int number2 = RANDOM.nextInt(MAX_RANDOM_NUMBER);
             int operatorIndex = RANDOM.nextInt(MATH_OPERATORS.length);
 
             String question = number1 + " " + MATH_OPERATORS[operatorIndex] + " " + number2;

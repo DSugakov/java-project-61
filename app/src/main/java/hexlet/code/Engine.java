@@ -10,7 +10,7 @@ public class Engine {
     public static final int MAX_NUMBERS = 6;
     private static final int ROUNDS_FOR_WIN = 3;
     private int round = 0;
-    private String userName; //исправить
+    private static String userName;
 
     public static Scanner getScanner() {
         return SCANNER;
@@ -20,12 +20,12 @@ public class Engine {
         this.round = roundNumber;
     }
 
-    public static int getRoundsForWin() {
+    public int getRoundsForWin() {
         return ROUNDS_FOR_WIN;
     }
 
-    public void setUserName(String name) {
-        this.userName = name;
+    public static void setUserName(String name) {
+        userName = name;
     }
 
     public void runGame(String rules, String[][] roundsData) {
@@ -44,10 +44,10 @@ public class Engine {
                 System.out.println("Correct!");
             } else {
                 System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.%n", userAnswer, correctAnswer);
-                System.out.printf("Let's try again, %s!%n", userName);
+                System.out.printf("Let's try again, %s!%n", this.userName);
                 return;
             }
         }
-        System.out.printf("Congratulations, %s!%n", userName);
+        System.out.printf("Congratulations, %s!%n", this.userName);
     }
 }

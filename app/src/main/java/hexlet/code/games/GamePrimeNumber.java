@@ -4,6 +4,8 @@ import hexlet.code.Cli;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
+import static hexlet.code.Engine.MAX_RANDOM_NUMBER;
+
 
 public class GamePrimeNumber {
     static Engine engine = new Engine();
@@ -20,10 +22,10 @@ public class GamePrimeNumber {
     }
 
     private static String[][] generateRoundsData() {
-        String[][] roundsData = new String[Engine.getRoundsForWin()][2];
+        String[][] roundsData = new String[engine.getRoundsForWin()][2];
 
-        for (int i = 0; i < Engine.getRoundsForWin(); i++) {
-            int number = Utils.getRandomNumber(Engine.MAX_RANDOM_NUMBER) + 1;
+        for (int i = 0; i < engine.getRoundsForWin(); i++) {
+            int number = Utils.getRandomNumber(MAX_RANDOM_NUMBER) + 1;
             String correctAnswer = gamePrimeResult(isPrime(number));
 
             roundsData[i][0] = String.valueOf(number);
