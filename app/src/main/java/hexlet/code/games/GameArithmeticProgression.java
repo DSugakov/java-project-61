@@ -5,25 +5,25 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class GameArithmeticProgression {
-    static Engine engine = new Engine();
+    private static final Engine ENGINE = new Engine();
 
     public static void buildArithmeticProgression() {
-        Cli.acquaintance();
+        Cli.acquaintance(ENGINE);
 
-        engine.setRound(0);
+        ENGINE.setRound(0);
 
         String[][] roundsData = generateRoundsData();
 
-        engine.runGame("What number is missing in the progression?", roundsData);
+        ENGINE.runGame("What number is missing in the progression?", roundsData);
     }
 
     private static String[][] generateRoundsData() {
-        String[][] roundsData = new String[engine.getRoundsForWin()][2];
+        String[][] roundsData = new String[ENGINE.getRoundsForWin()][2];
 
-        for (int i = 0; i < engine.getRoundsForWin(); i++) {
-            int firstNumber = Utils.getRandomNumber(engine.MAX_RANDOM_NUMBER) + 1;
-            int difference = Utils.getRandomNumber(engine.MAX_DIFFERENCE) + 1;
-            int numbers = Utils.getRandomNumber(engine.MAX_NUMBERS - engine.MIN_NUMBERS + 1) + engine.MIN_NUMBERS;
+        for (int i = 0; i < ENGINE.getRoundsForWin(); i++) {
+            int firstNumber = Utils.getRandomNumber(Engine.MAX_RANDOM_NUMBER) + 1;
+            int difference = Utils.getRandomNumber(Engine.MAX_DIFFERENCE) + 1;
+            int numbers = Utils.getRandomNumber(Engine.MAX_NUMBERS - Engine.MIN_NUMBERS + 1) + Engine.MIN_NUMBERS;
             String[] progression = new String[numbers];
 
             int hiddenIndex = Utils.getRandomNumber(numbers);

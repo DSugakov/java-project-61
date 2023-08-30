@@ -17,7 +17,8 @@ public class App {
         System.out.println("Your choice: " + input);
         switch (input) {
             case MenuOptions.GREET:
-                Cli.acquaintance();
+                Engine engine = new Engine();
+                Cli.acquaintance(engine);
                 break;
             case MenuOptions.EVEN:
                 GameParity.buildGameParity();
@@ -41,4 +42,3 @@ public class App {
         }
     }
 }
-

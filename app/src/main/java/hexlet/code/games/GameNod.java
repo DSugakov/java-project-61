@@ -7,22 +7,21 @@ import hexlet.code.Utils;
 import static hexlet.code.Engine.MAX_RANDOM_NUMBER;
 
 public class GameNod {
-    static Engine engine = new Engine();
-
+    private static final Engine ENGINE = new Engine();
     public static void buildGameNod() {
-        Cli.acquaintance();
+        Cli.acquaintance(ENGINE);
 
-        engine.setRound(0);
+        ENGINE.setRound(0);
 
         String[][] roundsData = generateRoundsData();
 
-        engine.runGame("Find the greatest common divisor of given numbers.", roundsData);
+        ENGINE.runGame("Find the greatest common divisor of given numbers.", roundsData);
     }
 
     private static String[][] generateRoundsData() {
-        String[][] roundsData = new String[engine.getRoundsForWin()][2];
+        String[][] roundsData = new String[ENGINE.getRoundsForWin()][2];
 
-        for (int i = 0; i < engine.getRoundsForWin(); i++) {
+        for (int i = 0; i < ENGINE.getRoundsForWin(); i++) {
             int firstNumber = Utils.getRandomNumber(MAX_RANDOM_NUMBER) + 1;
             int secondNumber = Utils.getRandomNumber(MAX_RANDOM_NUMBER) + 1;
 

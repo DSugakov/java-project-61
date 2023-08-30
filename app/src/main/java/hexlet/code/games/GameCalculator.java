@@ -10,16 +10,16 @@ import static hexlet.code.Engine.MAX_RANDOM_NUMBER;
 public class GameCalculator {
     private static final Random RANDOM = new Random();
     private static final String[] MATH_OPERATORS = {"+", "-", "*"};
-    static Engine engine = new Engine();
+    private static final Engine ENGINE = new Engine();
 
     public static void gameCalculator() {
-        Cli.acquaintance();
+        Cli.acquaintance(ENGINE);
 
-        engine.setRound(0);
+        ENGINE.setRound(0);
 
         String[][] roundsData = generateRoundsData();
 
-        engine.runGame("What is the result of the expression?", roundsData);
+        ENGINE.runGame("What is the result of the expression?", roundsData);
     }
 
     private static int calculate(int number1, int number2, String operator) {
@@ -36,9 +36,9 @@ public class GameCalculator {
     }
 
     private static String[][] generateRoundsData() {
-        String[][] roundsData = new String[engine.getRoundsForWin()][2];
+        String[][] roundsData = new String[ENGINE.getRoundsForWin()][2];
 
-        for (int i = 0; i < engine.getRoundsForWin(); i++) {
+        for (int i = 0; i < ENGINE.getRoundsForWin(); i++) {
             int number1 = RANDOM.nextInt(MAX_RANDOM_NUMBER);
             int number2 = RANDOM.nextInt(MAX_RANDOM_NUMBER);
             int operatorIndex = RANDOM.nextInt(MATH_OPERATORS.length);

@@ -8,23 +8,23 @@ import static hexlet.code.Engine.MAX_RANDOM_NUMBER;
 
 
 public class GameParity {
-    static Engine engine = new Engine();
+    private static final Engine ENGINE = new Engine();
 
     public static void buildGameParity() {
-        Cli.acquaintance();
+        Cli.acquaintance(ENGINE);
 
-        engine.setRound(0);
+        ENGINE.setRound(0);
 
         String[][] roundsData = generateRoundsData();
 
-        engine.runGame("Answer 'yes' if the number is even, otherwise answer 'no'.", roundsData);
+        ENGINE.runGame("Answer 'yes' if the number is even, otherwise answer 'no'.", roundsData);
 
     }
 
     private static String[][] generateRoundsData() {
-        String[][] roundsData = new String[engine.getRoundsForWin()][2];
+        String[][] roundsData = new String[ENGINE.getRoundsForWin()][2];
 
-        for (int i = 0; i < engine.getRoundsForWin(); i++) {
+        for (int i = 0; i < ENGINE.getRoundsForWin(); i++) {
             int question = Utils.getRandomNumber(MAX_RANDOM_NUMBER);
 
             String correctAnswer = correctAnswer(question);

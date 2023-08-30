@@ -8,23 +8,23 @@ import static hexlet.code.Engine.MAX_RANDOM_NUMBER;
 
 
 public class GamePrimeNumber {
-    static Engine engine = new Engine();
+    private static final Engine ENGINE = new Engine();
 
     public static void buildGamePrimeNumber() {
-        Cli.acquaintance();
+        Cli.acquaintance(ENGINE);
 
-        engine.setRound(0);
+        ENGINE.setRound(0);
 
         String[][] roundsData = generateRoundsData();
 
-        engine.runGame("Answer 'yes' if given number is prime. Otherwise answer 'no'.", roundsData);
+        ENGINE.runGame("Answer 'yes' if given number is prime. Otherwise answer 'no'.", roundsData);
 
     }
 
     private static String[][] generateRoundsData() {
-        String[][] roundsData = new String[engine.getRoundsForWin()][2];
+        String[][] roundsData = new String[ENGINE.getRoundsForWin()][2];
 
-        for (int i = 0; i < engine.getRoundsForWin(); i++) {
+        for (int i = 0; i < ENGINE.getRoundsForWin(); i++) {
             int number = Utils.getRandomNumber(MAX_RANDOM_NUMBER) + 1;
             String correctAnswer = gamePrimeResult(isPrime(number));
 
