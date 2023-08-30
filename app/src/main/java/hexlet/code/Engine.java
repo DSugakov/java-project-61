@@ -12,22 +12,48 @@ public class Engine {
     private int round = 0;
     private String userName;
 
+    /**
+     * Gets the Scanner instance associated with the system input.
+     *
+     * @return The Scanner instance for input reading.
+     */
     public Scanner getScanner() {
         return scanner;
     }
 
+    /**
+     * Sets the round number for the game.
+     *
+     * @param roundNumber The round number to set.
+     */
     public void setRound(int roundNumber) {
         round = roundNumber;
     }
 
+    /**
+     * Gets the number of rounds needed to win the game.
+     *
+     * @return The number of rounds for a win.
+     */
     public int getRoundsForWin() {
         return roundsForWin;
     }
 
+    /**
+     * Sets the username.
+     *
+     * @param name The username to set.
+     */
     public void setUserName(String name) {
         userName = name;
     }
 
+    /**
+     * Runs the game with the provided rules and rounds data.
+     *
+     * @param rules The rules of the game.
+     * @param roundsData Data for each round.
+     */
     public void runGame(String rules, String[][] roundsData) {
         System.out.println(rules);
 
@@ -43,7 +69,8 @@ public class Engine {
             if (userAnswer.equals(correctAnswer)) {
                 System.out.println("Correct!");
             } else {
-                System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.%n", userAnswer, correctAnswer);
+                System.out.printf("'%s' is the wrong answer ;(. The correct answer was '%s'.%n",
+                        userAnswer, correctAnswer);
                 System.out.printf("Let's try again, %s!%n", userName);
                 return;
             }
