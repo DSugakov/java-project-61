@@ -1,30 +1,22 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
-import static hexlet.code.Engine.MAX_RANDOM_NUMBER;
-
 public class GameNod {
     private static final Engine ENGINE = new Engine();
+
     public static void buildGameNod() {
-        Cli.acquaintance(ENGINE);
-
-        ENGINE.setRound(0);
-
         String[][] roundsData = generateRoundsData();
-
         ENGINE.runGame("Find the greatest common divisor of given numbers.", roundsData);
     }
 
     private static String[][] generateRoundsData() {
-        String[][] roundsData = new String[ENGINE.getRoundsForWin()][2];
+        String[][] roundsData = new String[Engine.ROUNDS_FOR_WIN][2];
 
-        for (int i = 0; i < ENGINE.getRoundsForWin(); i++) {
-            int firstNumber = Utils.getRandomNumber(MAX_RANDOM_NUMBER) + 1;
-            int secondNumber = Utils.getRandomNumber(MAX_RANDOM_NUMBER) + 1;
-
+        for (int i = 0; i < Engine.ROUNDS_FOR_WIN; i++) {
+            int firstNumber = Utils.getRandomNumber(Engine.MAX_RANDOM_NUMBER) + 1;
+            int secondNumber = Utils.getRandomNumber(Engine.MAX_RANDOM_NUMBER) + 1;
             int correctAnswer = generateGreatestDivisor(firstNumber, secondNumber);
 
             roundsData[i][0] = firstNumber + " " + secondNumber;

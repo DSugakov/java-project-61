@@ -8,36 +8,8 @@ public class Engine {
     public static final int MAX_DIFFERENCE = 10;
     public static final int MIN_NUMBERS = 5;
     public static final int MAX_NUMBERS = 6;
-    private final int roundsForWin = 3;
-    private int round = 0;
+    public static final int ROUNDS_FOR_WIN = 3;
     private String userName;
-
-    /**
-     * Gets the Scanner instance associated with the system input.
-     *
-     * @return The Scanner instance for input reading.
-     */
-    public Scanner getScanner() {
-        return scanner;
-    }
-
-    /**
-     * Sets the round number for the game.
-     *
-     * @param roundNumber The round number to set.
-     */
-    public void setRound(int roundNumber) {
-        round = roundNumber;
-    }
-
-    /**
-     * Gets the number of rounds needed to win the game.
-     *
-     * @return The number of rounds for a win.
-     */
-    public int getRoundsForWin() {
-        return roundsForWin;
-    }
 
     /**
      * Sets the username.
@@ -51,11 +23,16 @@ public class Engine {
     /**
      * Runs the game with the provided rules and rounds data.
      *
-     * @param rules The rules of the game.
+     * @param rules      The rules of the game.
      * @param roundsData Data for each round.
      */
     public void runGame(String rules, String[][] roundsData) {
         System.out.println(rules);
+
+        System.out.println("May I have your name?");
+        String name = scanner.nextLine();
+        setUserName(name);
+        System.out.println("Hello, " + name + "!");
 
         for (String[] step : roundsData) {
             String question = step[0];
@@ -64,7 +41,7 @@ public class Engine {
             System.out.print("Question: ");
             System.out.println(question);
             System.out.print("Your answer: ");
-            String userAnswer = getScanner().nextLine();
+            String userAnswer = scanner.nextLine();
 
             if (userAnswer.equals(correctAnswer)) {
                 System.out.println("Correct!");
