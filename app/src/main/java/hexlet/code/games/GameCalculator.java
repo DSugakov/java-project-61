@@ -8,18 +8,16 @@ public class GameCalculator {
     private static final Random RANDOM = new Random();
     private static final String[] MATH_OPERATORS = {"+", "-", "*"};
     private static final Engine ENGINE = new Engine();
-    private static final int MAX_RANDOM_NUMBER = 100;
-    private static final int ROUNDS_FOR_WIN = 10;
 
     public static void gameCalculate() {
         final String rules = "What is the result of the expression?";
-        String[][] roundsData = generateRoundsData(ROUNDS_FOR_WIN);
+        String[][] roundsData = generateRoundsData(Engine.ROUNDS_FOR_WIN);
         ENGINE.runGame(rules, roundsData);
     }
 
     private static String[] generateRoundData() {
-        int number1 = RANDOM.nextInt(MAX_RANDOM_NUMBER);
-        int number2 = RANDOM.nextInt(MAX_RANDOM_NUMBER);
+        int number1 = RANDOM.nextInt(Engine.MAX_RANDOM_NUMBER);
+        int number2 = RANDOM.nextInt(Engine.MAX_RANDOM_NUMBER);
         int operatorIndex = RANDOM.nextInt(MATH_OPERATORS.length);
 
         String question = number1 + " " + MATH_OPERATORS[operatorIndex] + " " + number2;
