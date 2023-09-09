@@ -25,6 +25,11 @@ public class GameArithmeticProgression {
         int firstNumber = Utils.getRandomNumber(Engine.MAX_RANDOM_NUMBER) + 1;
         int difference = Utils.getRandomNumber(Engine.MAX_DIFFERENCE) + 1;
         int numbers = Utils.getRandomNumber(Engine.MAX_NUMBERS - Engine.MIN_NUMBERS + 1) + Engine.MIN_NUMBERS;
+
+        return generateProgressionWithHiddenElement(firstNumber, difference, numbers);
+    }
+
+    private static String[] generateProgressionWithHiddenElement(int firstNumber, int difference, int numbers) {
         String[] progression = new String[numbers];
         int hiddenIndex = Utils.getRandomNumber(numbers);
         int hiddenNumber = firstNumber + hiddenIndex * difference;
@@ -41,4 +46,3 @@ public class GameArithmeticProgression {
         return new String[]{question, String.valueOf(hiddenNumber)};
     }
 }
-
